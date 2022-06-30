@@ -3,8 +3,14 @@
 #include <cpu_features/cpu_features_macros.h>
 
 #ifdef CPU_FEATURES_ARCH_X86
+#  include <cpu_features/cpuinfo_x86.h>
+#endif  // CPU_FEATURES_ARCH_X86
 
-#include <cpu_features/cpuinfo_x86.h>
+#include "common/namespace.h"
+
+BASE_NS_BEGIN
+
+#ifdef CPU_FEATURES_ARCH_X86
 
 inline const cpu_features::X86Info*
 get_cpu_info() {
@@ -54,3 +60,5 @@ inline bool enable_avx2() { return static_cast<bool>(get_cpu_features().avx2); }
 #endif
 
 #endif  // CPU_FEATURES_ARCH_X86
+
+BASE_NS_END
