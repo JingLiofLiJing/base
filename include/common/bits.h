@@ -10,6 +10,7 @@
 #  include <cpu_features/cpuinfo_x86.h>
 #endif  // CPU_FEATURES_ARCH_X86
 
+#include "common/attributes.h"
 #include "common/namespace.h"
 
 BASE_NS_BEGIN
@@ -43,7 +44,7 @@ inline uint32_t get_cacheline_size() {
         }
     }
 
-    if (!found) {
+    if (BASE_UNLIKELY(!found)) {
         throw std::runtime_error("could not solve the cpu cacheline size.");
     }
     return sz;
