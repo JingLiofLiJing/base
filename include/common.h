@@ -4,5 +4,6 @@
 
 #include "common/attributes.h"
 #include "common/bits.h"
+#include "common/class.h"
 #include "common/cpu_features.h"
 #include "common/namespace.h"
