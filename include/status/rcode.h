@@ -6,7 +6,7 @@
 
 BASE_NS_BEGIN
 
-enum class rcode : uint32_t {
+enum class rcode : uint16_t {
     ok             = 0u,
     internal_error = 1u,
     // Unknown error category.

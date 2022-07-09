@@ -15,6 +15,10 @@
 
 BASE_NS_BEGIN
 
+inline constexpr uint32_t byte_bits = 8u;
+inline constexpr std::size_t bytes_to_bits(std::size_t bytes) { return bytes * byte_bits; }
+inline constexpr std::size_t bits_to_bytes(std::size_t bits) { return bits / byte_bits; }
+
 #ifdef CPU_FEATURES_ARCH_X86
 
 #ifdef CPU_FEATURES_ARCH_X86_32
