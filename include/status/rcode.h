@@ -6,13 +6,13 @@
 
 BASE_NS_BEGIN
 
-enum class RCode : uint32_t {
-    kOK            = 0u,
-    kInternalError = 1u,
+enum class rcode : uint32_t {
+    ok             = 0u,
+    internal_error = 1u,
     // Unknown error category.
-    kUnknownError  = static_cast<uint32_t>(-1),
+    unknown_error  = 2u,
 };
 
-std::string_view rcode_text(RCode code);
+std::string_view rcode_text(rcode code);
 
 BASE_NS_END

@@ -2,12 +2,12 @@
 
 BASE_NS_BEGIN
 
-std::string_view rcode_text(RCode code) {
-    using namespace std::string_view_literals;
+std::string_view rcode_text(rcode code) {
+    using std::string_view_literals::operator""sv;
     switch (code) {
-        case RCode::kOK:            { return "OK"sv; }
-        case RCode::kInternalError: { return "InternalError"sv; }
-        default:                    { return "UnknownError"sv; }
+        case rcode::ok:             { return "ok"sv; }
+        case rcode::internal_error: { return "internal_error"sv; }
+        default:                    { return "unknown_error"sv; }
     }
 }
 
