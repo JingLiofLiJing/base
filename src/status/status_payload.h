@@ -6,7 +6,7 @@
 #include <string>
 #include <utility>
 
-#include "status/rcode.h"
+#include "status/details/tagged_state.h"
 #include "sync/ref_counter.h"
 
 #include "fmt/format.h"
@@ -37,6 +37,8 @@ private:
     rcode       code_;
     std::string reason_;
 };
+
+static_assert(alignof(status_payload) >= (1u << details::tagged_state::tags_width));
 
 inline void status_payload_ptr_deleter(status_payload* sp) { sp->decrease(); }
 
