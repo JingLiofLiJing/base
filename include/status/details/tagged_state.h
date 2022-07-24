@@ -3,6 +3,9 @@
 #include "status/rcode.h"
 
 BASE_NS_BEGIN
+
+class status_payload;
+
 BASE_BEGIN_NAMESPACE(details)
 
 struct tagged_state {
@@ -25,7 +28,16 @@ struct tagged_state {
     constexpr bool is_rcode_only() const { return (state_ & tagged_mask) == rcode_only_mask; }
     constexpr rcode only_rcode() const { return static_cast<rcode>(state_ >> tags_width); }
 
+    static constexpr uintptr_t payload_state(status_payload* spl) {
+        return reinterpret_cast<uintptr_t>(spl);
+    }
     constexpr bool is_payload() const { return (state_ & tagged_mask) == 0u; }
+    constexpr status_payload* to_payload() {
+        return reinterpret_cast<status_payload*>(state_);
+    }
+    constexpr const status_payload* to_payload() const {
+        return reinterpret_cast<const status_payload*>(state_);
+    }
 
     uintptr_t state_;
 };

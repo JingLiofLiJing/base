@@ -1,14 +1,12 @@
 #pragma once
 
 #include <atomic>
-#include <type_traits>
 
 #include "common.h"
 
 BASE_NS_BEGIN
 
-template <typename T,
-          std::enable_if_t<!std::is_pointer_v<T>, int> = 0>
+template <typename T>
 class ref_counter_base {
 public:
     void increase() { ref_count_.fetch_add(1u, std::memory_order_relaxed); }

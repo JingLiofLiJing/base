@@ -16,8 +16,10 @@
 BASE_NS_BEGIN
 
 inline constexpr uint32_t byte_bits = 8u;
-inline constexpr std::size_t bytes_to_bits(std::size_t bytes) { return bytes * byte_bits; }
-inline constexpr std::size_t bits_to_bytes(std::size_t bits) { return bits / byte_bits; }
+BASE_ALWAYS_INLINE constexpr std::size_t
+bytes_to_bits(std::size_t bytes) { return bytes * byte_bits; }
+BASE_ALWAYS_INLINE constexpr std::size_t
+bits_to_bytes(std::size_t bits) { return bits / byte_bits; }
 
 #ifdef CPU_FEATURES_ARCH_X86
 
@@ -35,7 +37,8 @@ get_cache_info() {
     return &info;
 }
 
-inline uint32_t get_cacheline_size() {
+inline uint32_t
+get_cacheline_size() {
     auto info = get_cache_info();
     const auto* entry = info->levels;
     bool found = false;
